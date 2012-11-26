@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Learn Better</title>
+<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+<script src="http://code.jquery.com/jquery-1.8.2.js"></script>
+
+<script type="text/javascript">
+
+function validateAnswer(chosen, actual)
+{
+  if (chosen == actual)
+  {
+    alert("correct");
+  }
+  else
+  {
+    alert('wrong');
+  }
+}
+</script>
+</head>
+<body>
+
+<div class="topbar" data-scrollspy="scrollspy">
+      <div class="topbar-inner">
+        <div class="container">
+          <a class="brand" href="/">Learn Better</a>
+        </div>
+      </div>
+    </div>
+
+
+ <div class="container">
+    <div class="content">
+
+
+      <% @game_pkg[:correct_answer].times do %>
+        <img src='images/earth.png' />
+      <% end %>
+
+      <div>
+        <% @game_pkg[:possible_answers].each do |possible_answer| %>
+  		    <a href="/?guess=<%= possible_answer %>" class="btn btn-primary" onclick="validateAnswer(<%= possible_answer %>, <%= @game_pkg[:correct_answer] %>)"><%= possible_answer %></a>
+        <% end %>
+      </div>
+
+	<p><small>&copy; 2012 Stewart Marketing LLC.  All rights reserved.</small></p>
+    </div>
+  </div>
+
+</body>
+</html>
